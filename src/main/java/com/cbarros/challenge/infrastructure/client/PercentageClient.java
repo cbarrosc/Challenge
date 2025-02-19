@@ -2,7 +2,6 @@ package com.cbarros.challenge.infrastructure.client;
 
 import com.cbarros.challenge.domain.port.PercentagePort;
 import com.cbarros.challenge.infrastructure.configuration.PercentageCacheService;
-import com.cbarros.challenge.infrastructure.exception.PercentageServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,10 +24,6 @@ public class PercentageClient implements PercentagePort {
                 .uri("/percentage")
                 .retrieve()
                 .bodyToMono(String.class)
-                .map(response -> Double.parseDouble(response.replace("%", "")))
-                .doOnNext(percentage -> cacheService.storePercentage(PERCENTAGE, percentage))
-                .onErrorResume(error -> cacheService.getPercentage(PERCENTAGE)
-                            .switchIfEmpty(Mono.error(new PercentageServiceException(CACHE_ERROR, 404)))
-                );
+                .map(response -> Double.parseDouble(response.replace("%", "")));
     }
 }

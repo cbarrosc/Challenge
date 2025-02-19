@@ -1,4 +1,7 @@
 services:
+#  app:
+#    environment:
+#      - MOCKSERVER_BASE_URL=http://mockserver:1080
   postgres:
     image: 'postgres:latest'
     environment:
