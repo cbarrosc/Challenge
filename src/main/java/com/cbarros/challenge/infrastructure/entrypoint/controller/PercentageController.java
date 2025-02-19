@@ -13,7 +13,7 @@ public class PercentageController implements PercentageApi {
 
     private final PercentageService percentageService;
 
-    //http://localhost:8080/webjars/swagger-ui/index.html#/percentage-controller/calculatePercentage
+    //http://localhost:8080/swagger-ui/index.html
     @Override
     public Mono<Double> calculatePercentage(PercentageRequest percentageRequest) {
 

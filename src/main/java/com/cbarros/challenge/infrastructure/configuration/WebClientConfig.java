@@ -1,4 +1,4 @@
-package com.cbarros.challenge.infrastructure.client.config;
+package com.cbarros.challenge.infrastructure.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
