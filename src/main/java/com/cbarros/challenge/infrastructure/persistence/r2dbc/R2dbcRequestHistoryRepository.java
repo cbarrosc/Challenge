@@ -4,8 +4,10 @@ import com.cbarros.challenge.domain.model.RequestHistory;
 import com.cbarros.challenge.domain.repository.RequestHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
+@Repository
 @RequiredArgsConstructor
 public class R2dbcRequestHistoryRepository implements RequestHistoryRepository {
 

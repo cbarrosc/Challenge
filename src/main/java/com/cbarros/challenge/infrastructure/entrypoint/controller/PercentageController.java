@@ -1,6 +1,7 @@
 package com.cbarros.challenge.infrastructure.entrypoint.controller;
 
 import com.cbarros.challenge.domain.service.interfaces.PercentageService;
+import com.cbarros.challenge.infrastructure.configuration.SaveRequestHistory;
 import com.cbarros.challenge.infrastructure.entrypoint.controller.api.PercentageApi;
 import com.cbarros.challenge.infrastructure.entrypoint.controller.model.PercentageRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class PercentageController implements PercentageApi {
 
     //http://localhost:8080/swagger-ui/index.html
     @Override
+    @SaveRequestHistory(endpoint = "/calculatePercentage")
     public Mono<Double> calculatePercentage(PercentageRequest percentageRequest) {
-
         return percentageService.calculatePercentage(percentageRequest);
     }
 
