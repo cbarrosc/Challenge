@@ -8,6 +8,8 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
+import org.springframework.lang.NonNull;
+
 
 
 @Component
@@ -20,7 +22,14 @@ public class RequestLoggingFilter implements WebFilter {
     }
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    public @NonNull Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
+        String path = exchange.getRequest().getPath().toString();
+
+        // Excluir Swagger y OpenAPI
+        if (path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
+            return chain.filter(exchange);
+        }
+
         long startTime = System.currentTimeMillis();
 
         return chain.filter(exchange)
@@ -36,7 +45,6 @@ public class RequestLoggingFilter implements WebFilter {
                 .response(success ? "Success" : null)
                 .error(error)
                 .success(success)
-                //.executionTime(System.currentTimeMillis() - startTime)
                 .build();
 
         requestHistoryRepository.save(history).subscribe(); // 🔹 No bloquea el flujo reactivo

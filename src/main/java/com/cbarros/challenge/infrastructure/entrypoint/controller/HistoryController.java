@@ -1,7 +1,6 @@
 package com.cbarros.challenge.infrastructure.entrypoint.controller;
 
 import com.cbarros.challenge.domain.service.interfaces.RequestHistoryService;
-import com.cbarros.challenge.infrastructure.configuration.SaveRequestHistory;
 import com.cbarros.challenge.infrastructure.entrypoint.controller.api.HistoryApi;
 import com.cbarros.challenge.infrastructure.entrypoint.controller.model.HistoryResponse;
 import lombok.RequiredArgsConstructor;

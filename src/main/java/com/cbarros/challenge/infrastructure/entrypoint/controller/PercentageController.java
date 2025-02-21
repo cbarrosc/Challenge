@@ -1,7 +1,6 @@
 package com.cbarros.challenge.infrastructure.entrypoint.controller;
 
 import com.cbarros.challenge.domain.service.interfaces.PercentageService;
-import com.cbarros.challenge.infrastructure.configuration.SaveRequestHistory;
 import com.cbarros.challenge.infrastructure.entrypoint.controller.api.PercentageApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
