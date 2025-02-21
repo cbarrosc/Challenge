@@ -14,7 +14,6 @@ public class PercentageController implements PercentageApi {
     private final PercentageService percentageService;
 
     @Override
-    @SaveRequestHistory(endpoint = "/calculatePercentage")
     public Mono<Double> calculatePercentage(double num1, double num2) {
         return percentageService.calculatePercentage(num1, num2);
     }

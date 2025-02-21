@@ -16,7 +16,6 @@ public class HistoryController implements HistoryApi {
     private final RequestHistoryService requestHistoryService;
 
     @Override
-    @SaveRequestHistory(endpoint = "/history")
     public Flux<HistoryResponse> getHistory(int page, int size) {
         return requestHistoryService.getHistory(PageRequest.of(page, size));
     }
