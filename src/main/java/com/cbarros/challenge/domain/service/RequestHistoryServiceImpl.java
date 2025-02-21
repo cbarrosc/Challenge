@@ -1,31 +1,31 @@
 package com.cbarros.challenge.domain.service;
 
-import com.cbarros.challenge.domain.model.RequestHistory;
 import com.cbarros.challenge.domain.repository.RequestHistoryRepository;
 import com.cbarros.challenge.domain.service.interfaces.RequestHistoryService;
+import com.cbarros.challenge.infrastructure.entrypoint.controller.model.HistoryResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
-import java.time.LocalDateTime;
-
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class RequestHistoryServiceImpl implements RequestHistoryService {
 
     private final RequestHistoryRepository requestHistoryRepository;
 
-    @Override
-    public Mono<Void> saveRequestHistory(String endpoint, String parameters, String response, String error, boolean success) {
-        RequestHistory history = RequestHistory.builder()
-                .timestamp(LocalDateTime.now())
-                .endpoint(endpoint)
-                .parameters(parameters)
-                .response(response)
-                .error(error)
-                .success(success)
-                .build();
 
-        return requestHistoryRepository.save(history);
-    }
+        @Override
+        public Flux<HistoryResponse> getHistory(Pageable pageable) {
+            return requestHistoryRepository.findAllBy(pageable)
+                    .map(history -> new HistoryResponse(
+                            history.getId(),
+                            history.getTimestamp(),
+                            history.getEndpoint(),
+                            history.getParameters(),
+                            history.getResponse(),
+                            history.getError(),
+                            history.isSuccess()
+                    ));
+        }
 }

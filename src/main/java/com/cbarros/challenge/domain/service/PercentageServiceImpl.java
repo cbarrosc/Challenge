@@ -3,7 +3,6 @@ package com.cbarros.challenge.domain.service;
 import com.cbarros.challenge.domain.port.PercentagePort;
 import com.cbarros.challenge.domain.service.interfaces.PercentageService;
 import com.cbarros.challenge.infrastructure.configuration.PercentageCacheService;
-import com.cbarros.challenge.infrastructure.entrypoint.controller.model.PercentageRequest;
 import com.cbarros.challenge.infrastructure.exception.PercentageServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,16 +19,16 @@ public class PercentageServiceImpl implements PercentageService {
     private final PercentageCacheService cacheService;
 
     @Override
-    public Mono<Double> calculatePercentage(PercentageRequest percentageRequest) {
+    public Mono<Double> calculatePercentage(double num1, double num2) {
         return percentagePort.getPercentage()
                 .flatMap(percentage -> cacheService.storePercentage(PERCENTAGE, percentage)
                         .thenReturn(percentage))
                 .onErrorResume(error -> cacheService.getPercentage(PERCENTAGE)
                         .switchIfEmpty(Mono.error(new PercentageServiceException(CACHE_ERROR, NOT_FOUND))))
-                .map(percentage -> applyPercentage(percentageRequest, percentage));
+                .map(percentage -> applyPercentage(num1, num2, percentage));
     }
 
-    private double applyPercentage(PercentageRequest percentageRequest, Double percentage){
-        return (percentageRequest.num1() + percentageRequest.num2()) * (1 + (percentage / 100));
+    private double applyPercentage(double num1, double num2, Double percentage){
+        return (num1 + num2) * (1 + (percentage / 100));
     }
 }

@@ -1,9 +1,9 @@
 package com.cbarros.challenge.domain.service.interfaces;
 
-import reactor.core.publisher.Mono;
+import com.cbarros.challenge.infrastructure.entrypoint.controller.model.HistoryResponse;
+import org.springframework.data.domain.Pageable;
+import reactor.core.publisher.Flux;
 
 public interface RequestHistoryService {
-
-    Mono<Void> saveRequestHistory(String endpoint, String parameters, String response, String error, boolean success);
-
+    Flux<HistoryResponse> getHistory(Pageable pageable);
 }
