@@ -26,17 +26,16 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     implementation 'org.postgresql:r2dbc-postgresql:1.0.7.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.0.5'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.5'
     implementation 'io.github.resilience4j:resilience4j-reactor:2.3.0'
+    implementation 'io.github.resilience4j:resilience4j-ratelimiter:2.3.0'
     implementation 'org.flywaydb:flyway-core:11.3.2'
     implementation("org.flywaydb:flyway-database-postgresql")
-    implementation 'com.github.vladimir-bukhtoyarov:bucket4j-core:7.6.0'
-    implementation 'com.github.vladimir-bukhtoyarov:bucket4j-redis:7.6.0'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
@@ -49,4 +48,8 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+jar {
+    archiveBaseName = 'challenge-app'
+    archiveVersion = '1.0.0'
 }
