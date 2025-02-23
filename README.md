@@ -29,7 +29,10 @@ No es necesario construirla, pero si deseas hacerlo localmente puedes ejecutar:
 
 Esto creará la imagen cbarrosc/challenge-app:x.x.x que será utilizada en Docker Compose.
 
-3. **Inicia los contenedores usando Docker Compose:** Asegúrate de que Docker esté corriendo en tu máquina. 
+3. **Verifica Mockserver: ** Asegúrate de que el directorio mockserver y el archivo [mockserver.json](https://github.com/cbarrosc/Challenge/blob/master/mockserver/mockserver.json) existan:
+El directorio mockserver debe contener el archivo mockserver.json. Si no existe, crea el archivo en la ubicación correspondiente.
+
+4. **Inicia los contenedores usando Docker Compose:** Asegúrate de que Docker esté corriendo en tu máquina. 
 Luego ejecuta el siguiente comando para iniciar los contenedores:
 ```bash
   docker-compose up
@@ -41,7 +44,7 @@ Esto arrancará los siguientes contenedores:
 * MockServer: Simulador de respuestas para pruebas.
 * App La aplicacion del servicio en Spring Boot.
 
-4. **Verifica que los contenedores estén corriendo:** Ejecuta el siguiente comando para asegurarte de que todos los servicios estén activos:
+5. **Verifica que los contenedores estén corriendo:** Ejecuta el siguiente comando para asegurarte de que todos los servicios estén activos:
 ```bash
   docker ps
 ```
