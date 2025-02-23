@@ -180,6 +180,7 @@ He pensado en posibles mejoras futuras para el proyecto que podrían implementar
 - Separar el desarrollo en **capas** con responsabilidades bien definidas.
 - Implementar un **API Gateway** para el manejo adecuado del **rate limit**.
 - Descargar automaticamente la configuración de mockserver usando un contenedor busybox
+- Alternativamente a este ultimo punto, generar una version custom de MockServer ya completamente configurada
 
 Además, considero que el manejo de servicios como **Redis**, **MockServer** y **Flyway** dentro del mismo archivo 
 **Docker Compose** no es lo ideal, y hubiese preferido tener instancias separadas para cada uno de estos servicios con
