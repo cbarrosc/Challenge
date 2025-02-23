@@ -70,7 +70,8 @@ Cuando hayas terminado, puedes detener todos los contenedores ejecutando:
 # Análisis técnico
 
 Este proyecto es un servicio desplegado con Docker y Spring Boot que incluye varias decisiones técnicas clave para 
-mejorar el rendimiento, la escalabilidad y la mantenibilidad del sistema. A continuación, se detalla un análisis sobre las decisiones tomadas durante el desarrollo del servicio.
+mejorar el rendimiento, la escalabilidad y la mantenibilidad del sistema. A continuación, se detalla un análisis sobre 
+las decisiones tomadas durante el desarrollo del servicio.
 
 ## Análisis de decisiones técnicas
 
