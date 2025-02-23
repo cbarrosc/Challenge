@@ -51,7 +51,8 @@ services:
       - ./mockserver:/config  # Configuración de MockServer
     networks:
       - mynetwork
-
+  # Asegúrate de que el archivo mockserver.json exista en el directorio ./mockserver
+  # Si no existe, crea el archivo y configura MockServer antes de iniciar los contenedores como se indica en el README.md
   app:
     image: cbarrosc/challenge-app:latest
     container_name: challenge-app

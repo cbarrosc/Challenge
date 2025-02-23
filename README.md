@@ -171,3 +171,22 @@ Springdoc OpenAPI genera una interfaz de usuario interactiva con Swagger UI, que
 directamente desde el navegador. Esto es útil tanto para desarrolladores como para consumidores de la API, ya 
 que proporciona un medio rápido para entender y probar la funcionalidad del servicio.
 
+
+### Conclusión
+
+He pensado en posibles mejoras futuras para el proyecto que podrían implementarse de contar con más tiempo. Algunas de estas mejoras incluyen:
+
+- Automatizar la creación de la imagen Docker mediante **GitHub Actions**.
+- Separar el desarrollo en **capas** con responsabilidades bien definidas.
+- Implementar un **API Gateway** para el manejo adecuado del **rate limit**.
+- Descargar automaticamente la configuración de mockserver usando un contenedor busybox
+
+Además, considero que el manejo de servicios como **Redis**, **MockServer** y **Flyway** dentro del mismo archivo 
+**Docker Compose** no es lo ideal, y hubiese preferido tener instancias separadas para cada uno de estos servicios con
+el fin de mejorar la escalabilidad y mantenimiento.
+
+
+A pesar de estas áreas de mejora, se implementaron soluciones robustas que cumplen con los objetivos iniciales y
+permiten un despliegue rápido y funcional.
+
+
