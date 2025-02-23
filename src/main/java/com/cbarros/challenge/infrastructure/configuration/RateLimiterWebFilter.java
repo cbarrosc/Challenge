@@ -33,7 +33,7 @@ public class RateLimiterWebFilter implements WebFilter {
         }
 
         // Aplicar el Rate Limiter solo en otras rutas
-        String key = "rateLimiterKey"; // Puedes usar el IP del cliente o un identificador único
+        String key = "rateLimiterKey";
         int maxRequests = 3; // Máximo de solicitudes permitidas
         Duration duration = Duration.ofMinutes(1); // Período de tiempo
 

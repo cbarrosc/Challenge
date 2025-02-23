@@ -16,7 +16,6 @@ public class PercentageClient implements PercentagePort {
     private final WebClient mockServerWebClient;
     private final PercentageCacheService cacheService;
 
-    //TODO: Eliminar el map que elimina %
 
     @Override
     public Mono<Double> getPercentage() {
